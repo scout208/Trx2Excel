@@ -44,10 +44,10 @@ namespace Trx2Excel.TrxReaderUtil
             result.Outcome = node.Attributes?[NodeName.Outcome]?.InnerText;
             var outcome = (TestOutcome)Enum.Parse(typeof(TestOutcome), result.Outcome, true);
             result.NameSpace = GetNameSpace(doc.GetElementsByTagName(NodeName.UnitTest), node.Attributes?[NodeName.TestId]?.InnerText);
+            var output = node.ChildNodes[GetNodeIndex(node, NodeName.Output)];
             switch (outcome)
             {
                 case TestOutcome.Failed:
-                    var output = node.ChildNodes[GetNodeIndex(node, NodeName.Output)];
                     var errorInfo = output.ChildNodes[GetNodeIndex(output, NodeName.ErrorInfo)];
                     result.Message = errorInfo.ChildNodes[GetNodeIndex(errorInfo, NodeName.Message)]?.InnerText;
                     result.StackTrace = errorInfo.ChildNodes[GetNodeIndex(node, NodeName.StackTrace)]?.InnerText;
@@ -60,6 +60,8 @@ namespace Trx2Excel.TrxReaderUtil
                     SkipCount++;
                     break;
             }
+
+            result.Output = output.InnerText;
             return result;
         }
 

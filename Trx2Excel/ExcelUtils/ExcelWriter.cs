@@ -69,7 +69,7 @@ namespace Trx2Excel.ExcelUtils
                 sheet.Cells[i, 1].AutoFitColumns();
                 sheet.Cells[i, 2].Value = result.Outcome;
                 sheet.Cells[i, 2].AutoFitColumns();
-                sheet.Cells[i, 3].Value = result.NameSpace;
+                sheet.Cells[i, 3].Value = result.Output;
                 sheet.Cells[i, 3].AutoFitColumns();
                 sheet.Cells[i, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
                 sheet.Cells[i, 2].Style.Fill.BackgroundColor.SetColor(

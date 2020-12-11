@@ -13,5 +13,6 @@ namespace Trx2Excel.Model
         public string Message { get; set; }
         public string StackTrace { get; set; }
         public string NameSpace { get; set; }
+        public string Output { get; set; }
     }
 }
